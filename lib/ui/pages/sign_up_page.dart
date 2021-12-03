@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_airplane/ui/widgets/button.dart';
+import 'package:project_airplane/ui/widgets/input_field.dart';
 import '../../shared/theme.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -21,139 +22,6 @@ class SignUpPage extends StatelessWidget {
     }
 
     Widget inputSection(){
-      Widget nameInput(){
-        return Container(
-          margin: EdgeInsets.only(bottom: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Full Name'),
-              SizedBox(height: 6),
-              TextFormField(
-                cursorColor: kBlackColor,
-                autocorrect: false,
-                enableSuggestions: false,
-                style: blackTextStyle.copyWith(
-                  fontSize: 16,
-                  fontWeight: regular,
-                ),
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                  hintText: 'Input your full name',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(defaultRadius)
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: kPrimaryColor),
-                    borderRadius: BorderRadius.circular(defaultRadius)
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      }
-
-      Widget emailInput(){
-        return Container(
-          margin: EdgeInsets.only(bottom: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Email'),
-              SizedBox(height: 6),
-              TextFormField(
-                cursorColor: kBlackColor,
-                autocorrect: false,
-                enableSuggestions: false,
-                style: blackTextStyle.copyWith(
-                  fontSize: 16,
-                  fontWeight: regular,
-                ),
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                  hintText: 'Input your Email',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(defaultRadius)
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: kPrimaryColor),
-                    borderRadius: BorderRadius.circular(defaultRadius)
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      }
-
-      Widget passwordInput(){
-        return Container(
-          margin: EdgeInsets.only(bottom: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Password'),
-              SizedBox(height: 6),
-              TextFormField(
-                obscureText: true,
-                cursorColor: kBlackColor,
-                autocorrect: false,
-                enableSuggestions: false,
-                style: blackTextStyle.copyWith(
-                  fontSize: 16,
-                  fontWeight: regular,
-                ),
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                  hintText: 'Input your password',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(defaultRadius)
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: kPrimaryColor),
-                    borderRadius: BorderRadius.circular(defaultRadius)
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      }
-
-      Widget hobbyInput(){
-        return Container(
-          margin: EdgeInsets.only(bottom: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Hobby'),
-              SizedBox(height: 6),
-              TextFormField(
-                cursorColor: kBlackColor,
-                autocorrect: false,
-                enableSuggestions: false,
-                style: blackTextStyle.copyWith(
-                  fontSize: 16,
-                  fontWeight: regular,
-                ),
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                  hintText: 'Whats your hobby?',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(defaultRadius)
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: kPrimaryColor),
-                    borderRadius: BorderRadius.circular(defaultRadius)
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      }
-
       return Container(
         margin: EdgeInsets.only(top: 30),
         padding: EdgeInsets.symmetric(
@@ -169,11 +37,12 @@ class SignUpPage extends StatelessWidget {
         ),
         child: Column(
           children: [
-            nameInput(),
-            emailInput(),
-            passwordInput(),
-            hobbyInput(),
+            InputField(label: 'Full Name', hint: 'Input your full name'),
+            InputField(label: 'Email', hint: 'Input your email'),
+            InputField(label: 'Password', hint: 'Input your password', isHidden: true),
+            InputField(label: 'Hobby', hint: 'Whats your hobby?'),
             Button(
+              margin: EdgeInsets.only(top: 10),
               title: 'Sign Up', 
               onPressed: () {
               Navigator.pushNamed(context, '/bonus');
