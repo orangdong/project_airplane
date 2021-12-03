@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_airplane/ui/widgets/button.dart';
 import '../../shared/theme.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -153,31 +154,6 @@ class SignUpPage extends StatelessWidget {
         );
       }
 
-      Widget submitBtn(){
-        return Container(
-          width: double.infinity,
-          height: 55,
-          child: TextButton(
-            onPressed: (){
-              Navigator.pushNamed(context, '/bonus');
-            },
-            style: TextButton.styleFrom(
-              backgroundColor: kPrimaryColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(defaultRadius),
-              ),
-            ),
-            child: Text(
-              'Sign Up',
-              style: whiteTextStyle.copyWith(
-                fontSize: 18,
-                fontWeight: medium
-              ),
-            ),
-          ),
-        );
-      }
-
       return Container(
         margin: EdgeInsets.only(top: 30),
         padding: EdgeInsets.symmetric(
@@ -197,7 +173,12 @@ class SignUpPage extends StatelessWidget {
             emailInput(),
             passwordInput(),
             hobbyInput(),
-            submitBtn()
+            Button(
+              title: 'Sign Up', 
+              onPressed: () {
+              Navigator.pushNamed(context, '/bonus');
+              },
+            ),
           ],
         ),
       );
