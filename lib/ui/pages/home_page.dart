@@ -92,7 +92,8 @@ class HomePage extends StatelessWidget {
         margin: EdgeInsets.only(
           top: 30,
           left: defaultMargin,
-          right: defaultMargin
+          right: defaultMargin,
+          bottom: 100
           ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
