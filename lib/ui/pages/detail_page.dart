@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:project_airplane/ui/pages/choose_seat_page.dart';
 import 'package:project_airplane/ui/widgets/button.dart';
 import 'package:project_airplane/ui/widgets/interests_item.dart';
 import '../../shared/theme.dart';
@@ -206,7 +207,9 @@ class DetailPage extends StatelessWidget {
                   Button(
                     title: 'Book Now',
                     width: 170,
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ChooseSeatPage()));
+                    },
                   ),
                 ],
               ),
