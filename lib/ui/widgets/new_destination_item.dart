@@ -44,7 +44,7 @@ class NewDestinationItem extends StatelessWidget {
               Text(title,
               style: blackTextStyle.copyWith(
                 fontSize: 18,
-                fontWeight: medium
+                fontWeight: semiBold
               ),
               ),
               Text(city,
