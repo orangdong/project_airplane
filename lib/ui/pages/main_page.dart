@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:project_airplane/ui/widgets/navigation_item.dart';
 import '../../shared/theme.dart';
+import 'home_page.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
+    Widget buildContent(){
+      return HomePage();
+    }
 
     Widget bottomNavigation(){
       return Align(
@@ -45,7 +50,7 @@ class MainPage extends StatelessWidget {
       backgroundColor: kBackgroundColor,
       body: Stack(
         children: [
-          Text('Main page'),
+          buildContent(),
           bottomNavigation(),
         ],
       ),
