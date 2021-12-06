@@ -157,14 +157,14 @@ class DetailPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 25),
+                  SizedBox(height: 20),
                   Text('Interests', style: 
                   blackTextStyle.copyWith(
                     fontSize: 16,
                     fontWeight: semiBold,
                   ),
                   ),
-                  SizedBox(height: 25),
+                  SizedBox(height: 20),
                   Row(
                     children: [
                       InterestsItem(title: 'Kids Park'),
