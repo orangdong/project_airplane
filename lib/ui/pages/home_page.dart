@@ -59,7 +59,7 @@ class HomePage extends StatelessWidget {
               ),
               PopularDestination(
                 image: 'assets/img_dest_2.png',
-                rating: '4.3',
+                rating: '4.5',
                 title: 'White House',
                 city: 'America'
               ),
