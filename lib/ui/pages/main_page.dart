@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:project_airplane/ui/widgets/navigation_item.dart';
 import '../../shared/theme.dart';
 import 'home_page.dart';
+import 'payment_page.dart';
+import 'setting_page.dart';
+import 'transaction_page.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({ Key? key }) : super(key: key);
