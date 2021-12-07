@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'cubit/page_cubit.dart';
 import 'ui/pages/get_started_page.dart';
 import 'ui/pages/home_page.dart';
 import 'ui/pages/main_page.dart';
@@ -19,15 +21,20 @@ class MyApp extends StatelessWidget {
       statusBarIconBrightness: Brightness.dark,
       statusBarBrightness: Brightness.dark,
     ));
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      routes: {
-        '/': (context) => SplashPage(),
-        '/get-started': (context) => GetStartedPage(),
-        '/sign-up': (context) => SignUpPage(),
-        '/bonus': (context) => BonusPage(),
-        '/main': (context) => MainPage()
-      },
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => PageCubit()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        routes: {
+          '/': (context) => SplashPage(),
+          '/get-started': (context) => GetStartedPage(),
+          '/sign-up': (context) => SignUpPage(),
+          '/bonus': (context) => BonusPage(),
+          '/main': (context) => MainPage()
+        },
+      ),
     );
   }
 }
