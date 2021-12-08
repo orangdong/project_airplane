@@ -5,10 +5,13 @@ class InputField extends StatelessWidget {
   final String label;
   final String hint;
   final bool isHidden;
+  final TextEditingController controller;
+
   const InputField({ 
     Key? key,
     required this.label,
     required this.hint,
+    required this.controller,
     this.isHidden = false,
    }) : super(key: key);
 
@@ -24,6 +27,7 @@ class InputField extends StatelessWidget {
           TextFormField(
             obscureText: isHidden,
             cursorColor: kBlackColor,
+            controller: controller,
             autocorrect: false,
             enableSuggestions: false,
             style: blackTextStyle.copyWith(
