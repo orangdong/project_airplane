@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project_airplane/cubit/auth_cubit.dart';
+import 'package:project_airplane/cubit/page_cubit.dart';
 import 'package:project_airplane/services/auth_service.dart';
+import 'package:project_airplane/ui/pages/sign_in_page.dart';
 import 'package:project_airplane/ui/widgets/button.dart';
 import '../../shared/theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,7 +20,8 @@ class SettingPage extends StatelessWidget {
             backgroundColor: kRedColor,
             ));
         }else if (state is AuthInitial){
-          Navigator.pushNamedAndRemoveUntil(context, '/sign-up', (route) => false);
+          context.read<PageCubit>().setPage(0);
+          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => SignInPage()), (route) => false);
         }
       },
       builder: (context, state) {

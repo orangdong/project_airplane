@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_airplane/cubit/auth_cubit.dart';
-import 'package:project_airplane/ui/pages/sign_in_page.dart';
 import 'package:project_airplane/ui/widgets/button.dart';
 import 'package:project_airplane/ui/widgets/input_field.dart';
 import '../../shared/theme.dart';
 
-class SignUpPage extends StatelessWidget {
-  SignUpPage({Key? key}) : super(key: key);
+class SignInPage extends StatelessWidget {
+  SignInPage({ Key? key }) : super(key: key);
 
-  final TextEditingController nameController = TextEditingController(text: '');
   final TextEditingController emailController = TextEditingController(text: '');
   final TextEditingController passwordController = TextEditingController(text: '');
-  final TextEditingController hobbyController = TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +17,7 @@ class SignUpPage extends StatelessWidget {
       return Container(
         margin: EdgeInsets.only(top: 30),
         child: Text(
-          'Join us and get\nyour next journey',
+          'Login with your\nexisiting account',
           style: blackTextStyle.copyWith(fontSize: 24, fontWeight: semiBold),
         ),
       );
@@ -37,10 +34,6 @@ class SignUpPage extends StatelessWidget {
         child: Column(
           children: [
             InputField(
-                label: 'Full Name',
-                hint: 'Input your full name',
-                controller: nameController),
-            InputField(
                 label: 'Email',
                 hint: 'Input your email',
                 controller: emailController),
@@ -49,14 +42,10 @@ class SignUpPage extends StatelessWidget {
                 hint: 'Input your password',
                 isHidden: true,
                 controller: passwordController),
-            InputField(
-                label: 'Hobby',
-                hint: 'Whats your hobby?',
-                controller: hobbyController),
             BlocConsumer<AuthCubit, AuthState>(
               listener: (context, state) {
                 if(state is AuthSuccess) {
-                  Navigator.pushNamedAndRemoveUntil(context, '/bonus', (route) => false);
+                  Navigator.pushNamedAndRemoveUntil(context, '/main', (route) => false);
                 }else if(state is AuthFailure){
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Text(state.error),
@@ -73,13 +62,11 @@ class SignUpPage extends StatelessWidget {
                 }
                 return Button(
                   margin: EdgeInsets.only(top: 10),
-                  title: 'Sign Up',
+                  title: 'Sign In',
                   onPressed: () {
-                    context.read<AuthCubit>().signUp(
-                      name: nameController.text,
+                    context.read<AuthCubit>().signIn(
                       email: emailController.text,
                       password: passwordController.text,
-                      hobby: hobbyController.text,
                     );
                   },
                 );
@@ -90,16 +77,16 @@ class SignUpPage extends StatelessWidget {
       );
     }
 
-    Widget tacButton() {
+    Widget signUpButton() {
       return GestureDetector(
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => SignInPage()));
+          Navigator.pushNamed(context, '/sign-up');
         },
         child: Container(
           margin: EdgeInsets.only(top: 50, bottom: 73),
           alignment: Alignment.center,
           child: Text(
-            'Already have account? Sign In',
+            'Dont have account? Sign Up',
             style: greyTextStyle.copyWith(
                 fontSize: 16,
                 fontWeight: light,
@@ -108,7 +95,6 @@ class SignUpPage extends StatelessWidget {
         ),
       );
     }
-
     return Scaffold(
       backgroundColor: kBackgroundColor,
       body: SafeArea(
@@ -116,7 +102,7 @@ class SignUpPage extends StatelessWidget {
           padding: EdgeInsets.symmetric(
             horizontal: defaultMargin,
           ),
-          children: [title(), inputSection(), tacButton()],
+          children: [title(), inputSection(), signUpButton()],
         ),
       ),
     );

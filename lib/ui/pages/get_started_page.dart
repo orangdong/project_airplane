@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_airplane/ui/pages/sign_in_page.dart';
 import 'package:project_airplane/ui/widgets/button.dart';
 import '../../shared/theme.dart';
 
@@ -47,7 +48,7 @@ class GetStartedPage extends StatelessWidget {
                   margin: EdgeInsets.only(top: 50, bottom: 80),
                   title: 'Get Started', 
                   onPressed: () {
-                  Navigator.pushNamed(context, '/sign-up');
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SignInPage()));
                   },
                   width: 220,
                 ),
