@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "792219510108",
+    "project_id": "project-airplane-6e66e",
+    "storage_bucket": "project-airplane-6e66e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:792219510108:android:2e9797c7206965ba4f0d99",
+        "android_client_info": {
+          "package_name": "com.sleeplessyeti.project_airplane"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "792219510108-o456gcmv8sl2voge2fgfek96ghsvq42c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_44JmgdDXTcA60pDK9XXobV4O5Ad3K8c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "792219510108-o456gcmv8sl2voge2fgfek96ghsvq42c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
