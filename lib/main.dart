@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit/auth_cubit.dart';
+import 'cubit/destination_cubit.dart';
 import 'cubit/page_cubit.dart';
 import 'ui/pages/get_started_page.dart';
 import 'ui/pages/home_page.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => PageCubit()),
         BlocProvider(create: (context) => AuthCubit()),
+        BlocProvider(create: (context) => DestinationCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
