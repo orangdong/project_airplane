@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:project_airplane/models/destination_model.dart';
 import 'package:project_airplane/ui/pages/detail_page.dart';
 import '../../shared/theme.dart';
 
 class PopularDestination extends StatelessWidget {
-  final String image;
-  final String title;
-  final String city;
-  final String rating;
-  const PopularDestination({ 
-    Key? key,
-    required this.image,
-    required this.title,
-    required this.city,
-    this.rating = '5.0'
+  final DestinationModel destination;
+  
+  const PopularDestination(
+    this.destination,{ 
+    Key? key
      }) : super(key: key);
 
   @override
@@ -42,7 +38,7 @@ class PopularDestination extends StatelessWidget {
               decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(defaultRadius),
               image: DecorationImage(
-                image: AssetImage(image),
+                image: NetworkImage(destination.imageUrl),
                 fit: BoxFit.fill,
                 ),
               ),
@@ -72,7 +68,7 @@ class PopularDestination extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Text(rating, 
+                        Text(destination.rating.toString(), 
                         style: blackTextStyle.copyWith(
                           fontWeight: semiBold
                           ),
@@ -90,13 +86,13 @@ class PopularDestination extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title,
+                  Text(destination.title,
                   style: blackTextStyle.copyWith(
                     fontSize: 18,
                     fontWeight: semiBold
                   ),
                   ),
-                  Text(city, 
+                  Text(destination.city, 
                   style: greyTextStyle.copyWith(
                     fontSize: 14,
                     fontWeight: light
