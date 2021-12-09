@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:project_airplane/cubit/auth_cubit.dart';
 import 'package:project_airplane/ui/widgets/button.dart';
 import '../../shared/theme.dart';
@@ -80,7 +81,11 @@ class BonusPage extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'IDR 1.000.000',
+                          NumberFormat.currency(
+                            locale: 'id',
+                            symbol: 'IDR ',
+                            decimalDigits: 0,
+                          ).format(state.user.balance),
                           style: whiteTextStyle.copyWith(
                             fontWeight: medium,
                             fontSize: 26,
