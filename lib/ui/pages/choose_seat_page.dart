@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:project_airplane/cubit/seat_cubit.dart';
 import 'package:project_airplane/models/destination_model.dart';
+import 'package:project_airplane/models/transaction_model.dart';
 import 'package:project_airplane/ui/pages/checkout_page.dart';
 import 'package:project_airplane/ui/widgets/button.dart';
 import 'package:project_airplane/ui/widgets/seat.dart';
@@ -298,16 +299,30 @@ class ChooseSeatPage extends StatelessWidget {
           children: [
             title(),
             seatContainer(),
-            Button(
-              title: 'Continue To Checkout',
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => CheckoutPage()));
+            BlocBuilder<SeatCubit, List<String>>(
+              builder: (context, state) {
+                return Button(
+                          title: 'Continue To Checkout',
+                          onPressed: () {
+                            int price = state.length * destination.price;
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => CheckoutPage(TransactionModel(
+                                  destination: destination,
+                                  amount: state.length,
+                                  selectedSeat: state.join(', '),
+                                  insurance: true,
+                                  refundable: false,
+                                  vat: 0.10,
+                                  price: price,
+                                  total: price + (price * 0.10).toInt(), 
+                                  ))));
+                          },
+                          margin: EdgeInsets.only(
+                            top: 30,
+                            bottom: 46,
+                          ),
+                        );
               },
-              margin: EdgeInsets.only(
-                top: 30,
-                bottom: 46,
-              ),
             ),
           ],
         ),
