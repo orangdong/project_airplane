@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:project_airplane/cubit/auth_cubit.dart';
+import 'package:project_airplane/cubit/transaction_cubit.dart';
 import 'package:project_airplane/models/transaction_model.dart';
 import 'package:project_airplane/shared/theme.dart';
 import 'package:project_airplane/ui/pages/success_page.dart';
@@ -281,14 +282,34 @@ class CheckoutPage extends StatelessWidget {
               route(),
               bookingDetail(),
               paymentDetail(),
-              Button(
-                title: 'Pay Now',
-                margin: EdgeInsets.only(top: 30, bottom: 30),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SuccessPage()));
+              BlocConsumer<TransactionCubit, TransactionState>(
+                builder: (context, state){
+                  if(state is TransactionLoading){
+                    return Container(
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.only(top: 30),
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  return Button(
+                    title: 'Pay Now',
+                    margin: EdgeInsets.only(top: 30, bottom: 30),
+                    onPressed: () {
+                      context.read<TransactionCubit>().createTransaction(transaction);
+                    },
+                  );
                 },
-              ),
+                 listener: (context, state){
+                   if(state is TransactionSuccess) {
+                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => SuccessPage()), (route) => false);
+                    }else if(state is TransactionFailure){
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text(state.error),
+                        backgroundColor: kRedColor,
+                        ));
+                    }
+                 }
+                 ),
               Text(
                 'Terms and Conditions',
                 style: greyTextStyle.copyWith(

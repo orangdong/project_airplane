@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:project_airplane/cubit/page_cubit.dart';
 import 'package:project_airplane/ui/widgets/button.dart';
 import '../../shared/theme.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SuccessPage extends StatelessWidget {
   const SuccessPage({ Key? key }) : super(key: key);
@@ -42,6 +44,7 @@ class SuccessPage extends StatelessWidget {
               margin: EdgeInsets.only(top: 50, bottom: 50),
               width: 220,
               onPressed: () {
+                context.read<PageCubit>().setPage(1);
                 Navigator.pushNamedAndRemoveUntil(context, '/main', (route) => false);
               },
             )
