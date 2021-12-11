@@ -22,18 +22,18 @@ class TransactionService {
       }
   }
 
-  // Future<List<TransactionModel>> getTransactions() async{
+  Future<List<TransactionModel>> getTransactions() async{
 
-  //   try {
-  //     QuerySnapshot querySnapshot = await _transactionCollection.get();
+    try {
+      QuerySnapshot querySnapshot = await _transactionCollection.get();
 
-  //     List<TransactionModel> destinationList = querySnapshot.docs.map((e){
-  //       return TransactionModel.fromJson(e.id, e.data() as Map<String, dynamic>);
-  //     }).toList();
+      List<TransactionModel> destinationList = querySnapshot.docs.map((e){
+        return TransactionModel.fromJson(e.id, e.data() as Map<String, dynamic>);
+      }).toList();
       
-  //     return destinationList;
-  //   } catch (e) {
-  //     throw e;
-  //   }
-  // }
+      return destinationList;
+    } catch (e) {
+      throw e;
+    }
+  }
 }
